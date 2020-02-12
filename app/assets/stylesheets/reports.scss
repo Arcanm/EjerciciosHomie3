@@ -1,0 +1,476 @@
+$content-margin: 20px;
+$content-margin-bottom: 5px;
+$border: solid 1px #E4E1D3;
+$titles-margin: 5px;
+$desktop: 768px;
+$size-bar: 10px;
+
+@mixin margin-header{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+@mixin margin-texts{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@mixin  margin-footer {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin-left: 10px ;
+  margin-right: 10px;
+}
+
+span {
+  font-weight: bold;
+}
+
+.container {
+  width: 100%;
+  margin: 20px 0px;
+  display: grid;
+  border: $border;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(7,auto);
+  grid-template-areas: 
+  "headers headers headers headers"
+  "report report report report"
+  "score score score score"
+  "contact contact contact contact"
+  "info info info info"
+  "footer footer footer footer"
+  "button button button button";
+
+  @media (min-width:$desktop) {
+    width: 750px;
+    border: none;
+    margin: 20px auto;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(7, auto);
+    grid-template-areas:
+    "report report report report"
+    "score contact contact contact"
+    "score info info info"
+    "score info info info"
+    "score info info info"
+    "footer footer footer footer"
+    "button button button button";
+  }
+}
+
+.container {
+  .header {
+    width: 100%;
+    grid-area: headers;
+    padding: $titles-margin;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    border-bottom: solid 2px #E4E1D3;
+    .back-image{
+      display: inline-block;
+      margin-left: 30px ;
+      @include margin-header();
+    }
+    .user-image{
+      display: inline-block;
+      margin-right: 30px;
+      @include margin-header();
+    }
+    .image-preview{
+      display: inline-block;
+      @include margin-header();
+    }
+    @media (min-width:$desktop) {
+      .back-image{
+        display: none;
+      }
+      .user-image{
+        display: none;
+      }
+      .image-preview{
+        display: none;
+      }
+      .image-preview2{
+        display: block;
+      }
+    }
+  }
+}
+
+.container {
+  .section-report {
+    width: 100%;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    grid-area: report;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center ;   
+    margin-top: $content-margin-bottom;
+    margin-bottom: $content-margin-bottom;
+    border: $border;
+    padding: 5px;
+    @media (min-width: $desktop) {
+      flex-direction: column;
+      align-content: center;
+      justify-content: flex-start;
+      align-items: center;  
+      padding-left: 50px; 
+      flex-direction: row;
+    }
+    .image-report {
+      .image-preview2 {
+        display: none;
+        @media (min-width:$desktop) {
+          display: block;
+          width: 75px;
+          height: 75px;
+        }
+      }
+    }
+    .content-report {
+      .title { 
+        margin-top: $titles-margin;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: $titles-margin;
+        @media (min-width:$desktop) {
+          text-align: left;
+          margin-left: 15px;
+          font-size: 30px;
+          font-weight: bold;
+          
+        }
+      }
+      .text-header{
+        font-weight: 200;
+        color: #333333;
+        text-align: center;
+        font-size: 14px;
+        @media (min-width:$desktop) {
+          text-align: left;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
+
+.container{
+  .section-score {
+    width: 100%;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    grid-area: score;
+    margin-bottom: $content-margin-bottom;
+    border: $border;
+    @media (min-width:$desktop) {
+      width: 320px ;
+    }
+    .container-circle {
+      @include margin-header();
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin-top: 15px;
+      .center-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-weight: bold;
+      }
+    }
+    .bar-container {
+      display: grid;
+      width: 55%;
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: repeat(3,auto);
+      grid-template-areas: 
+      "minimum minimum maximum maximum"
+      "bar bar bar bar"
+      "bad medium good excelent";
+      @media (min-width:$desktop) {
+        width: 80%;
+      }
+      .min {
+        grid-area: minimum;
+        text-align: start;
+        font-size: 12px;
+      }
+      .max {
+        grid-area: maximum;
+        text-align: end;
+        font-size: 12px;
+      }
+      .bar {
+        grid-area: bar;
+        width: 100%;
+      }
+      .bad {
+        grid-area: bad;
+        text-align: center;
+        font-size: $size-bar;
+      }
+      .medium {
+        grid-area: medium;
+        text-align: center;
+        font-size: $size-bar;
+      }
+      .good {
+        grid-area: good;
+        text-align: center;
+        font-size: $size-bar;
+      }
+      .excelent {
+        grid-area: excelent;
+        text-align: center;
+        font-size: $size-bar;
+      }
+    }
+    .title-score {
+      font-size: 20px;
+      font-weight: 600;
+      @include margin-header();
+      @media (min-width: $desktop) {
+        font-size: 16px;
+        margin:0;
+        margin-top: 10px;
+        margin-bottom: 7px;
+      }
+    }
+    .text-score {
+      @include margin-header();
+      text-align: center;
+      @media (min-width: $desktop) {
+        width: 100%;
+        text-align: center;
+        font-size: 13.5px;
+        margin-top: 0px;
+        margin-bottom: 15px;
+      }
+    }
+    .footer-section-score {
+      background-color: rgb(205, 215, 52);
+      width: 100%;
+      padding-top: 40px;
+      padding-bottom: 20px;
+      @media (min-width:$desktop) {
+        padding-bottom: 250px;
+        
+      }
+      .title-footer {
+        margin-left: 25px;
+        margin-bottom: 10px;
+        @media (min-width:$desktop) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}
+
+.container{
+  .container-contact-info {
+    grid-area: contact;
+    width: 100%;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    margin-bottom: $content-margin-bottom;
+    display: flex;
+    flex-direction: row;
+    border: $border;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    @media (min-width:$desktop) {
+      margin-left: 1px;
+      margin-right: 0px;
+    }
+    .contact-image {
+      margin-right: 5%;
+      margin-left: 5%;
+      .image-user-info {
+        width: 60px;
+        height: 60px;
+        border: 2px solid #E4E1D3;
+        border-radius: 100%;
+        @media (min-width:$desktop){
+          display: block;
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+    .contact-info {
+      @include margin-texts;
+      .contact-name {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        
+      }
+      .contact-adress {
+        margin-bottom: 10px;;
+        font-size: 14px;
+      }
+      .contact-price {
+        font-size: 14px;
+      }
+    }
+    @media (min-width:$desktop){
+      flex-direction: column;
+      padding-top: 20px;
+      .contact-info {
+        .contact-name {
+          margin-top: 5px;
+          text-align: center;
+        }
+        .contact-adress {
+          text-align: center;
+        }
+        .contact-price {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  .info {
+    width: 100%;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    grid-area: info;
+    margin-bottom: $content-margin-bottom;
+    border: $border;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-between;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 5px;
+    @media (min-width: $desktop) {
+      padding-right: 30px;
+    }
+    .info-element {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .image-info {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+      }
+    }
+    .element-content {
+      font-size: 14px;
+      margin-top: 12px;
+    }
+    .element-content-references {
+      font-size: 14px;
+    }
+    .references{
+      width: 99%;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.container{
+  .footer-container {
+    grid-area: footer;
+    width: 100%;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    margin-bottom: $content-margin-bottom;
+    border: $border;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    @media (min-width: $desktop) {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+      
+    }
+    .footer {
+      font-size: 14px;
+      text-align: center;
+      @include margin-texts();
+      margin-bottom: 15px;
+      @media (min-width: $desktop) {
+        font-size: 16px;
+        width: 600px;
+        
+      }
+    }
+  }
+}
+
+.container {
+  .save-container{
+    grid-area: button;
+    display: flex;
+    flex-wrap: wrap;
+    width: 115px;
+    height: 30px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2px;
+    border: $border;
+    border-radius: 3px;
+    padding: 10px;
+    .icon {
+      margin-top: $titles-margin;
+      margin-left: $titles-margin;
+      font-weight: 500;
+    }
+  }
+}

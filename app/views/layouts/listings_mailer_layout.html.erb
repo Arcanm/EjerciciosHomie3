@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body>
+    <%= yield %>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .container{
+        width: 90%;
+        max-width: 1000px;
+        margin: 20px auto;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(7,auto);
+        grid-template-areas: 
+        "logo logo logo "
+        "logo2 logo2 logo2 "
+        "main main main "
+        "lamudi-m3 lamudi-m3 lamudi-m3"
+        "inmuebles24-clist inmuebles24-clist inmuebles24-clist"
+        "gq-prop-ml gq-prop-ml gq-prop-ml"
+        "button button button ";
+      }
+
+      .container .lamudi-m3 {
+        grid-area: lamudi-m3;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+      }
+
+      .lamudi-img {
+        margin-right: 40px;
+        width: 14%;
+      }
+
+      .metroscubicos-img {
+        width: 14%;
+      }
+
+      .container .inmuebles24-clist {
+        grid-area: inmuebles24-clist;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+      }
+
+      .inmuebles24-img {
+        margin-right: 40px;
+        width: 14%;
+      }
+
+      .craigslist-img {
+        width: 14%;
+      }
+
+      .mercadolibre-img {
+        width: 14%;
+      }
+
+      .container .gq-prop-ml {
+        grid-area: gq-prop-ml;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+      }
+
+      .gqplaceit-img {
+        margin-right: 20px;
+        width: 14%;
+      }
+
+      .propiedades-img {
+        margin-right: 20px;
+        width: 14%;
+      }
+
+      .container .logo {
+        grid-area: logo;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container .footer {
+        width: 100%;
+        align-content: center;
+      }
+
+      .container .logo2 img {
+        width: 100%;
+        height: 80%;
+      }
+
+      .container .logo2 {
+        grid-area: logo2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .container .main {
+        grid-area: main;
+        max-width: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .container .main .text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container .footer {
+        width: 160px;
+        height: 160px;
+        margin: auto;
+      }
+
+      .container .button {
+        grid-area: button;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .text {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 16px;
+        color:#666666;
+        max-width: 800px;
+      }
+
+      .link {
+        color: #8d7aff;
+      }
+
+      .button .text {
+        margin-top: 0px;
+      }
+
+      .title {
+        text-align: center;
+        color: #666666;
+        font-size: 20px;
+      }
+
+      .button .continue-button {
+        font-size: 16px;
+        background: white;
+        color: #8D7AFF;
+        border:#8D7AFF solid;
+        border-width: 1px;
+        width: 30%;
+        height: 40px;
+        margin-bottom: 15px;
+        margin-top: 20px;
+      }
+    </style>
+  </body>
+</html>
